@@ -1,9 +1,15 @@
-import { Heading } from "@chakra-ui/react"
+import { Heading, VStack } from "@chakra-ui/react"
+import AddTodo from "./components/AddTodo"
+import TodoList from "./components/TodoList"
 
 function App() {
 
   return (
-    <Heading>Todo Application</Heading>
+    <VStack>
+      <Heading size="4xl">Todo Application</Heading>
+      <AddTodo/>
+      <TodoList />
+    </VStack>
   )
 }
 
