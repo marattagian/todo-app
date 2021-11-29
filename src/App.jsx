@@ -1,9 +1,19 @@
 import { MoonIcon, SunIcon } from "@chakra-ui/icons"
 import { Heading, VStack, IconButton } from "@chakra-ui/react"
+import { useState } from "react"
 import AddTodo from "./components/AddTodo"
 import TodoList from "./components/TodoList"
 
 function App() {
+  const [tasksList, setTasksList] = useState([])
+
+  const addTask = (task) => {
+    setTasksList([...tasksList, task])
+  }
+
+  const deleteTask = (id) => {
+    setTasksList(tasksList.filter(task => task.id !== id))
+  }
 
   return (
     <VStack p={6}>
@@ -22,8 +32,8 @@ function App() {
       >
         Todo Application
       </Heading>
-      <AddTodo/>
-      <TodoList />
+      <AddTodo addTask={addTask} />
+      <TodoList tasks={tasksList} deleteTask={deleteTask}/>
     </VStack>
   )
 }

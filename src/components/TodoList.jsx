@@ -5,11 +5,24 @@ import {
   Text,
   IconButton,
   StackDivider,
-  Spacer
+  Spacer,
+  Badge
 } from "@chakra-ui/react"
-import data from "../data"
 
-const TodoList = () => {
+const TodoList = ({ tasks, deleteTask }) => {
+
+  if (!tasks.length) {
+    return(
+      <Badge
+        colorScheme="purple"
+        borderRadius="lg"
+        p={6}
+      >
+        No Task for the moment
+      </Badge>
+    )
+  }
+
   return(
     <VStack
       divider={<StackDivider/>}
@@ -22,11 +35,14 @@ const TodoList = () => {
       alignItems="stretch"
     >
       {
-        data.map((todo) => (
-          <HStack >
-            <Text>{ todo.body }</Text>
+        tasks.map((task) => (
+          <HStack key={task.id}>
+            <Text>{ task.body }</Text>
             <Spacer/>
-            <IconButton icon={<DeleteIcon/>} />
+            <IconButton
+              icon={<DeleteIcon/>}
+              onClick={() => deleteTask(task.id)}
+            />
           </HStack>
         ))
       }
