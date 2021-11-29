@@ -1,11 +1,17 @@
 import { MoonIcon, SunIcon } from "@chakra-ui/icons"
 import { Heading, VStack, IconButton } from "@chakra-ui/react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import AddTodo from "./components/AddTodo"
 import TodoList from "./components/TodoList"
 
 function App() {
-  const [tasksList, setTasksList] = useState([])
+  const [tasksList, setTasksList] = useState(
+    () => JSON.parse(localStorage.getItem('tasks')) || []
+  )
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasksList))
+  }, [tasksList])
 
   const addTask = (task) => {
     setTasksList([...tasksList, task])
