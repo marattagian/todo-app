@@ -1,5 +1,5 @@
 import { MoonIcon, SunIcon } from "@chakra-ui/icons"
-import { Heading, VStack, IconButton } from "@chakra-ui/react"
+import { Heading, VStack, IconButton, useColorMode } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 import AddTodo from "./components/AddTodo"
 import TodoList from "./components/TodoList"
@@ -21,13 +21,16 @@ function App() {
     setTasksList(tasksList.filter(task => task.id !== id))
   }
 
+  const { colorMode, toggleColorMode } = useColorMode()
+
   return (
     <VStack p={6}>
       <IconButton
-        icon={<MoonIcon/>}
+        icon={colorMode === 'dark'? <SunIcon /> : <MoonIcon/>}
         isRound={true}
         size="lg"
         alignSelf="flex-end"
+        onClick={toggleColorMode}
       />
       <Heading
         size="3xl"
