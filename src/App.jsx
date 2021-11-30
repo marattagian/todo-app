@@ -33,10 +33,10 @@ function App() {
         onClick={toggleColorMode}
       />
       <Heading
-        size="3xl"
+        fontSize={{ base: '1.5em', sm: '4xl' }}
         mb="8"
         fontWeight="extrabold"
-        bgGradient='linear(to-r, purple.500, cyan.400, teal.400)'
+        bgGradient='linear(to-r, blue.300, cyan.400, purple.500)'
         bgClip="text"
       >
         Todo Application

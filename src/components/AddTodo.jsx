@@ -31,7 +31,7 @@ const AddTodo = ({ addTask }) => {
 
   return(
     <form onSubmit={handleSumbit}>
-      <HStack borderWidth={0} p={6} w="xl" my="4">
+      <HStack  p={6} w="xl" my="4" maxW={{base: '100vw', sm: '80vw', lg: '50vw', xl: '40vw'}}>
         <Input
           variant="filled" 
           placeholder='create new task...' 
